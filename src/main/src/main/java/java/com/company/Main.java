@@ -1,4 +1,4 @@
-package com.company;
+package java.com.company;
 
 public class Main {
 
