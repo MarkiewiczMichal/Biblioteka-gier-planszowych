@@ -25,4 +25,12 @@ public class PhoneFormater {
         }
     }
 
+    public PhoneNumberUtil.PhoneNumberType getType(String str) {
+        try {
+            Phonenumber.PhoneNumber NumberProto = PHONE_NUMBER_UTIL.parse(str, "PL");
+            return PHONE_NUMBER_UTIL.getNumberType(NumberProto);
+        } catch (NumberParseException e) {
+            return null;
+        }
+    }
 }
