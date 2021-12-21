@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-
+<nav th:replace="navTemplate :: nav-menu" />
 <p>Say something in HTML file</p>
 
 <form th:action="@{/hello}" methond="post">

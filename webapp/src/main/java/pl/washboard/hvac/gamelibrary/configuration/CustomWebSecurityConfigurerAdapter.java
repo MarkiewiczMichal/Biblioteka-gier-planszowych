@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -38,15 +39,17 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
                 .antMatchers("/", "/nologin").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                //   .httpBasic()
-                //    .authenticationEntryPoint(authenticationEntryPoint);
-                .oauth2Login();
+                 .httpBasic()
+                    .authenticationEntryPoint(authenticationEntryPoint);
+               // .oauth2Login();
         http
                 .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/nologin")
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID");
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/nologin");
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/nologin")
+//                .invalidateHttpSession(true)
+//                .deleteCookies("JSESSIONID");
 
 
         http.addFilterAfter(new CustomFilter(),
