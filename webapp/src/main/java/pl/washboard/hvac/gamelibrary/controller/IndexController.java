@@ -14,15 +14,13 @@ public class IndexController {
         return "nologin";
     }
 
-
     @GetMapping("hello")
     public String sayHello(Model model) {
         return "hello";
     }
 
-//    @PostMapping("nologin2")
-//    public String youLogedOut(Model model) {
-//        return "nologin";
-//    }
-
+    @GetMapping("auth/userinfo")
+    public String userInformation(Model model) {
+        return "aboutUserInfo";
+    }
 }

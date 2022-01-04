@@ -36,27 +36,21 @@ public class CustomWebSecurityConfigurerAdapter extends WebSecurityConfigurerAda
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/nologin").permitAll()
+                .antMatchers("/", "/nologin", "/auth/userinfo").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                 .httpBasic()
-                    .authenticationEntryPoint(authenticationEntryPoint);
-               // .oauth2Login();
+//                .httpBasic()
+//                .authenticationEntryPoint(authenticationEntryPoint);
+        .oauth2Login();
         http
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/nologin");
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/nologin")
-//                .invalidateHttpSession(true)
-//                .deleteCookies("JSESSIONID");
-
 
         http.addFilterAfter(new CustomFilter(),
                 BasicAuthenticationFilter.class);
 
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
