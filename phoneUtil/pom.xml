@@ -2,20 +2,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>phoneUtil</artifactId>
-    <groupId>pl.washboard.hvac.libutil</groupId>
+   <groupId>pl.washboard.hvac.libutil</groupId>
     <version>1.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <modelVersion>4.0.0</modelVersion>
 
-    <dependencies>
-        <dependency>
-            <scope>compile</scope>
-            <groupId>com.googlecode.libphonenumber</groupId>
-            <artifactId>libphonenumber</artifactId>
-            <version>8.12.37</version>
-        </dependency>
-    </dependencies>
+    <artifactId>phoneUtil</artifactId>
+<dependencies>
+    <dependency>
+        <scope>compile</scope>
+        <groupId>com.googlecode.libphonenumber</groupId>
+        <artifactId>libphonenumber</artifactId>
+        <version>8.12.37</version>
+    </dependency>
+</dependencies>
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
