@@ -1,0 +1,14 @@
+<html xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<nav th:fragment="nav-menu" class="menu" style="color:blue; background:skyblue; height:20px; text-align: center; ">
+    <div>Biblioteka gier planszowych</div>
+
+    <div sec:authorize="isAuthenticated()" style="color:green;">
+        Login <span sec:authentication="name"></span>
+        isLogged: true</div>
+
+    <div sec:authorize="isAnonymous()" style="color:red;">
+        Login <span>anonymous</span>
+        isLogged: false</div>
+
+</nav>
+</html>
